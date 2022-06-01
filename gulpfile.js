@@ -4,6 +4,35 @@ const cp = require('child_process');
 const del = require('del');
 const src = __dirname + '/src/';
 
+function npmInstall() {
+    return new Promise((resolve, reject) => {
+        // Install node modules
+        const cwd = src.replace(/\\/g, '/');
+
+        const cmd = `npm install -f`;
+        console.log(`"${cmd} in ${cwd}`);
+
+        // System call used for update of js-controller itself,
+        // because during installation npm packet will be deleted too, but some files must be loaded even during the install process.
+        const exec = cp.exec;
+        const child = exec(cmd, {cwd});
+
+        child.stderr.pipe(process.stderr);
+        child.stdout.pipe(process.stdout);
+
+        child.on('exit', (code /* , signal */) => {
+            // code 1 is strange error that cannot be explained. Everything is installed but error :(
+            if (code && code !== 1) {
+                reject('Cannot install: ' + code);
+            } else {
+                console.log(`"${cmd} in ${cwd} finished.`);
+                // command succeeded
+                resolve();
+            }
+        });
+    });
+}
+
 function build() {
     const version = JSON.parse(fs.readFileSync(__dirname + '/package.json').toString('utf8')).version;
     const data    = JSON.parse(fs.readFileSync(src + 'package.json').toString('utf8'));
@@ -15,7 +44,7 @@ function build() {
     return new Promise((resolve, reject) => {
         const options = {
             stdio: 'pipe',
-            cwd:   __dirname
+            cwd:   src
         };
 
         console.log(options.cwd);
@@ -39,19 +68,17 @@ function build() {
     });
 }
 
-gulp.task('0-clean', () => del(['build/**/*', 'dist/**/*']));
+gulp.task('0-clean', () => del(['admin/**/*', 'src/dist/**/*']));
 
-gulp.task('1-compile', async () => build());
+gulp.task('1-npm', async () => npmInstall());
+gulp.task('2-compile', async () => build());
 
-gulp.task('2-copy', () => Promise.all([
-    gulp.src(['dist/assets/*.js', '!dist/assets/__federation_shared_*.js', '!dist/assets/__federation_lib_semver.js']).pipe(gulp.dest('build/admin/custom')),
-    gulp.src(['dist/assets/*.map', '!dist/assets/__federation_shared_*.map', '!dist/assets/__federation_lib_semver.map']).pipe(gulp.dest('build/admin/custom')),
-    gulp.src(['src/i18n/*.json']).pipe(gulp.dest('build/admin/custom/i18n')),
-    gulp.src(['img/*']).pipe(gulp.dest('build/img')),
-    gulp.src(['README.md', 'LICENSE']).pipe(gulp.dest('build')),
-    gulp.src(['src/package.json']).pipe(gulp.dest('build')),
+gulp.task('3-copy', () => Promise.all([
+    gulp.src(['src/dist/assets/*.js', '!src/dist/assets/__federation_shared_*.js', '!src/dist/assets/__federation_lib_semver.js', '!src/dist/assets/index.*.js']).pipe(gulp.dest('admin/custom')),
+    gulp.src(['src/dist/assets/*.map', '!src/dist/assets/__federation_shared_*.map', '!src/dist/assets/__federation_lib_semver.js.map', '!src/dist/assets/index.*.js.map']).pipe(gulp.dest('admin/custom')),
+    gulp.src(['src/src/i18n/*.json']).pipe(gulp.dest('admin/custom/i18n')),
 ]));
 
-gulp.task('build', gulp.series(['0-clean', '1-compile', '2-copy']));
+gulp.task('build', gulp.series(['0-clean', '1-npm', '2-compile', '3-copy']));
 
 gulp.task('default', gulp.series(['build']));

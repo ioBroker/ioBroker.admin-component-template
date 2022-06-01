@@ -1,30 +1,31 @@
 {
-    "name": "@iobroker/admin-component-easy-access",
+    "name": "iobroker-admin-component-easy-access",
+    "private": true,
     "version": "0.1.0",
-    "description": "Admin JSON config component",
-    "author": {
-        "name": "bluefox",
-        "email": "dogafox@gmail.com"
+    "scripts": {
+        "vite-dev": "vite",
+        "vite-build": "vite build",
+        "vite-preview": "vite preview"
     },
-    "publishConfig": {
-        "access": "public"
-    },
-    "scripts": {},
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ioBroker/ioBroker.admin-component-easy-access.git"
-    },
-    "module": "./admin/custom/customComponents.js",
-    "keywords": [
-        "iobroker",
-        "adapter",
-        "iot"
-    ],
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/ioBroker/ioBroker.admin-component-easy-access/issues"
-    },
-    "homepage": "https://github.com/ioBroker/ioBroker.admin-component-easy-access#readme",
-    "devDependencies": {},
-    "dependencies": {}
+    "dependencies": {},
+    "devDependencies": {
+        "@emotion/react": "^11.9.0",
+        "@emotion/styled": "^11.8.1",
+        "@iobroker/adapter-react-v5": "^3.0.14",
+        "@mui/material": "^5.8.1",
+        "@mui/styles": "^5.8.0",
+        "prop-types": "^15.8.1",
+        "react": "^18.1.0",
+        "react-ace": "^10.1.0",
+        "react-dom": "^18.1.0",
+        "@originjs/vite-plugin-federation": "^1.1.6",
+        "@rollup/plugin-babel": "^5.3.1",
+        "@rollup/plugin-commonjs": "^22.0.0",
+        "@rollup/plugin-node-resolve": "^13.3.0",
+        "@rollup/plugin-replace": "^4.0.0",
+        "@types/react": "^18.0.9",
+        "@types/react-dom": "^18.0.5",
+        "@vitejs/plugin-react": "^1.3.2",
+        "vite": "^2.9.9"
+    }
 }

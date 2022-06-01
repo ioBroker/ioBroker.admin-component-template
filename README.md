@@ -4,11 +4,11 @@ This component is used for admin setting.
 ## How to use
 Build process creates files in directory build.
 
-All files from `build/admin` folder must be in adapter admin directory. 
+All files from `admin/custom` folder must be in adapter admin directory. 
 
 To use this component in admin add to jsonConfig.json file:
 ```
-    "accessAllowedConfigs": {
+    "myCustomAttribute": {
       "type": "custom",
       "i18n": true,
       "url": "custom/customComponents.js",
@@ -21,6 +21,11 @@ Explanation:
 - `Components` - file name where all components are
 - `ExampleComponent` - name of component in `Components.js`which must be used.
 - `i18n` - if set to `true`, so the admin will load language files from `i18n`directory (in the same directory, where `customComponents.js` is), if set to language object, it will be used directly. Example: `{"easyconfig_text": {"en": "Text"}}`.
+
+## Development
+Start in `src`:
+
+`npm run vite-dev` 
 
 <!--
 	### **WORK IN PROGRESS**
@@ -35,7 +40,7 @@ Explanation:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2021-2022 bluefox <dogafox@gmail.com>
+Copyright (c) 2022 bluefox <dogafox@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
