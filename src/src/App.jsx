@@ -61,9 +61,7 @@ class App extends GenericApp {
                                 name: 'ConfigCustomTemplateSet/Components/ExampleComponent',
                                 type: 'custom',
                             }}
-                            onChange={(attr, value) => {
-                                const data = JSON.parse(JSON.stringify(this.state.data));
-                                ConfigGeneric.setValue(data, attr, value);
+                            onChange={data => {
                                 this.setState({ data });
                             }}
                         />
