@@ -1,5 +1,5 @@
 {
-  "name": "iobroker-admin-component-easy-access",
+  "name": "iobroker.admin-component-template",
   "private": true,
   "version": "0.1.0",
   "scripts": {
@@ -7,6 +7,9 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@alcalzone/release-script": "^3.5.9",
+    "@alcalzone/release-script-plugin-iobroker": "^3.5.9",
+    "@alcalzone/release-script-plugin-license": "^3.5.9",
     "gulp": "^4.0.2",
     "del": "^6.1.1"
   }

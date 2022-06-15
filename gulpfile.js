@@ -49,9 +49,9 @@ function build() {
 
         console.log(options.cwd);
 
-        let script = src + 'node_modules/vite/bin/vite.js';
+        let script = src + 'node_modules/@craco/craco/bin/craco.js';
         if (!fs.existsSync(script)) {
-            script = __dirname + '/node_modules/vite/bin/vite.js';
+            script = __dirname + '/node_modules/@craco/craco/bin/craco.js';
         }
         if (!fs.existsSync(script)) {
             console.error('Cannot find execution file: ' + script);
@@ -68,14 +68,16 @@ function build() {
     });
 }
 
-gulp.task('0-clean', () => del(['admin/**/*', 'src/dist/**/*']));
+gulp.task('0-clean', () => del(['admin/**/*', '!admin/admin-component-template.png', '!admin/jsonConfig.json', 'src/build/**/*']));
 
 gulp.task('1-npm', async () => npmInstall());
 gulp.task('2-compile', async () => build());
 
 gulp.task('3-copy', () => Promise.all([
-    gulp.src(['src/dist/assets/*.js', '!src/dist/assets/__federation_shared_*.js', '!src/dist/assets/__federation_lib_semver.js', '!src/dist/assets/index.*.js']).pipe(gulp.dest('admin/custom')),
-    gulp.src(['src/dist/assets/*.map', '!src/dist/assets/__federation_shared_*.map', '!src/dist/assets/__federation_lib_semver.js.map', '!src/dist/assets/index.*.js.map']).pipe(gulp.dest('admin/custom')),
+    gulp.src(['src/build/static/js/*.js']).pipe(gulp.dest('admin/custom/static/js')),
+    gulp.src(['src/build/static/js/*.map']).pipe(gulp.dest('admin/custom/static/js')),
+    gulp.src(['src/build/customComponents.js']).pipe(gulp.dest('admin/custom')),
+    gulp.src(['src/build/customComponents.js.map']).pipe(gulp.dest('admin/custom')),
     gulp.src(['src/src/i18n/*.json']).pipe(gulp.dest('admin/custom/i18n')),
 ]));
 

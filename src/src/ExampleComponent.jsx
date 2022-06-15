@@ -4,6 +4,10 @@ import { withStyles } from '@mui/styles';
 
 import { Button } from '@mui/material';
 
+// important to make from package and not from some children.
+// invalid
+// import ConfigGeneric from '@iobroker/adapter-react-v5/ConfigGeneric';
+// valid
 import { ConfigGeneric, ColorPicker } from '@iobroker/adapter-react-v5';
 
 const styles = theme => ({
@@ -20,7 +24,8 @@ class ExampleComponent extends ConfigGeneric {
     componentDidMount() {
         super.componentDidMount();
 
-        this.props.socket.getState('system.adapter.admin.0.alive').then(result => console.log(result));
+        this.props.socket.getState('system.adapter.admin.0.alive')
+            .then(result => console.log(result));
     }
 
     renderItem(error, disabled, defaultValue) {

@@ -1,3 +1,4 @@
+// this file used only for simulation and not used in end build
 import Theme from '@iobroker/adapter-react-v5/Theme';
 
 export default type => {

@@ -1,0 +1,41 @@
+{
+  "common": {
+    "name": "admin-component-template",
+    "version": "0.1.4",
+    "news": {
+      "0.1.4": {
+        "en": "initial commit"
+      }
+    },
+    "title": "Admin component example",
+    "desc": {
+      "en": "Admin component example"
+    },
+    "platform": "Javascript/Node.js",
+    "loglevel": "info",
+    "icon": "admin-component-template.png",
+    "enabled": true,
+    "mode": "once",
+    "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.admin-component-template/master/admin/admin-component-template.png",
+    "keywords": ["template", "admin"],
+    "readme": "https://github.com/ioBroker/ioBroker.admin-component-template/blob/master/README.md",
+    "authors": [
+      "bluefox <dogafox@gmail.com>"
+    ],
+    "adminUI": {
+      "config": "json"
+    },
+    "license": "MIT",
+    "dependencies": ["admin"],
+    "onlyWWW": true,
+    "singleton": true,
+    "type": "visualization-widgets",
+    "titleLang": {
+      "en": "Admin component example"
+    }
+  },
+  "native": {
+    "dependencies": []
+  },
+  "instanceObjects": []
+}

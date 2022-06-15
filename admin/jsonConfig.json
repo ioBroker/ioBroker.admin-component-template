@@ -1,0 +1,16 @@
+{
+  "type": "tabs",
+  "items": {
+    "Demo": {
+      "type": "panel",
+      "items": {
+        "myCustomAttribute": {
+          "type": "custom",
+          "i18n": true,
+          "url": "custom/customComponents.js",
+          "name": "ConfigCustomTemplateSet/Components/ExampleComponent"
+        }
+      }
+    }
+  }
+}

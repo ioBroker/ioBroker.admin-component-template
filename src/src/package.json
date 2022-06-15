@@ -1,6 +1,6 @@
 {
-    "name": "@iobroker/admin-component-easy-access",
-    "version": "0.1.0",
+    "name": "@iobroker/admin-component-template",
+    "version": "0.2.0",
     "description": "Admin JSON config component",
     "author": {
         "name": "bluefox",
@@ -12,7 +12,7 @@
     "scripts": {},
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ioBroker/ioBroker.admin-component-easy-access.git"
+        "url": "git+https://github.com/ioBroker/ioBroker.admin-component-template.git"
     },
     "module": "./admin/custom/customComponents.js",
     "keywords": [
@@ -22,9 +22,9 @@
     ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/ioBroker/ioBroker.admin-component-easy-access/issues"
+        "url": "https://github.com/ioBroker/ioBroker.admin-component-template/issues"
     },
-    "homepage": "https://github.com/ioBroker/ioBroker.admin-component-easy-access#readme",
+    "homepage": "https://github.com/ioBroker/ioBroker.admin-component-template#readme",
     "devDependencies": {},
     "dependencies": {}
 }
