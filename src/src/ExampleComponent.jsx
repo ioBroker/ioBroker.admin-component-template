@@ -33,9 +33,13 @@ class ExampleComponent extends ConfigGeneric {
     };
 
     renderItem(error, disabled, defaultValue) {
+        const value = ConfigGeneric.getValue(this.props.data, this.props.attr);
+
         return <>
             <Button variant="contained" onClick={this.buttonHandler}>Example Button</Button>
-            <ColorPicker value={ConfigGeneric.getValue(this.props.data, this.props.attr)} onChange={color => this.props.onChange(this.props.attr, color)}/>
+            <ColorPicker value={value} onChange={color => {
+                this.onChange(this.props.attr, color);
+            }}/>
         </>
     }
 }
@@ -47,6 +51,7 @@ ExampleComponent.propTypes = {
     style: PropTypes.object,
     className: PropTypes.string,
     data: PropTypes.object.isRequired,
+    attr: PropTypes.string,
     schema: PropTypes.object,
     onError: PropTypes.func,
     onChange: PropTypes.func,
