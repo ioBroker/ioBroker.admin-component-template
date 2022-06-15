@@ -28,16 +28,15 @@ class ExampleComponent extends ConfigGeneric {
             .then(result => console.log(result));
     }
 
+    buttonHandler = () => {
+        window.alert('button event');
+    };
+
     renderItem(error, disabled, defaultValue) {
         return <>
             <Button variant="contained" onClick={this.buttonHandler}>Example Button</Button>
-            <ColorPicker value="green" onChange={() => {}}/>
+            <ColorPicker value={ConfigGeneric.getValue(this.props.data, this.props.attr)} onChange={color => this.props.onChange(this.props.attr, color)}/>
         </>
-    }
-
-    buttonHandler() {
-        console.log(import.meta)
-        alert('button event')
     }
 }
 

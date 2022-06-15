@@ -25,7 +25,7 @@ Explanation:
 ## Development
 Start in `src`:
 
-`npm run vite-dev` 
+`npm run start` 
 
 <!--
 	### **WORK IN PROGRESS**
