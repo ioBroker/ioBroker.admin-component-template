@@ -12,12 +12,12 @@ To use this component in admin add to jsonConfig.json file:
       "type": "custom",
       "i18n": true,
       "url": "custom/customComponents.js",
-      "name": "ConfigCustomTemplateSet/Components/ExampleComponent"
+      "name": "AdminComponentTemplateSet/Components/ExampleComponent"
     }
 ```
 
 Explanation: 
-- `ConfigCustomTemplateSet` - is unique name of this set of components (see in `src/modulefederation.config.js => name (line 14)`)
+- `AdminComponentTemplateSet` - is unique name of this set of components (see in `src/modulefederation.config.js => name (line 14)`). It is suggested to use adapter name for it. 
 - `Components` - file name where all components are (`src/Components.jsx`)
 - `ExampleComponent` - name of component in `Components.js`which must be used.
 - `i18n` - if set to `true`, so the admin will load language files from `i18n`directory (in the same directory, where `customComponents.js` is), if set to language object, it will be used directly. Example: `{"easyconfig_text": {"en": "Text"}}`.

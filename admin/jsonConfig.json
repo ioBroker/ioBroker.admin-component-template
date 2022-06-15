@@ -5,7 +5,7 @@
       "type": "custom",
       "i18n": true,
       "url": "custom/customComponents.js",
-      "name": "ConfigCustomTemplateSet/Components/ExampleComponent"
+      "name": "AdminComponentTemplateSet/Components/ExampleComponent"
     }
   }
 }

@@ -11,7 +11,7 @@ const makeShared = pkgs => {
 };
 
 module.exports = {
-    name: 'ConfigCustomTemplateSet',
+    name: 'AdminComponentTemplateSet',
     filename: 'customComponents.js',
     exposes: {
         './Components': './src/Components.jsx',

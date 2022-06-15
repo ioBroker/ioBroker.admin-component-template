@@ -36,11 +36,11 @@ class ExampleComponent extends ConfigGeneric {
         const value = ConfigGeneric.getValue(this.props.data, this.props.attr);
 
         return <>
-            <Button variant="contained" onClick={this.buttonHandler}>Example Button</Button>
+            <Button color="secondary" variant="contained" onClick={this.buttonHandler}>Example Button</Button>
             <ColorPicker value={value} onChange={color => {
                 this.onChange(this.props.attr, color);
             }}/>
-        </>
+        </>;
     }
 }
 
