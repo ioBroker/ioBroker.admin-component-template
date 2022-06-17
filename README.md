@@ -31,6 +31,9 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Corrected issue with version of common packages
+
 ### 0.1.0 (2022-05-26)
 * (bluefox) Added map files
 
