@@ -33,6 +33,7 @@ Start in `src`:
 ## Changelog
 ### **WORK IN PROGRESS**
 * (bluefox) Corrected issue with version of common packages
+* (bluefox) Updated packages
 
 ### 0.1.0 (2022-05-26)
 * (bluefox) Added map files

@@ -10,7 +10,7 @@ import I18n from '@iobroker/adapter-react-v5/i18n';
 import Loader from '@iobroker/adapter-react-v5/Components/Loader';
 
 import ExampleComponent from './ExampleComponent';
-import { ConfigGeneric } from '@iobroker/adapter-react-v5';
+import { ConfigGeneric, AdminConnection } from '@iobroker/adapter-react-v5';
 
 const styles = theme => ({
     app: {
@@ -27,6 +27,7 @@ const styles = theme => ({
 class App extends GenericApp {
     constructor(props) {
         const extendedProps = { ...props };
+        extendedProps.Connection = AdminConnection;
         super(props, extendedProps);
 
         this.state = {
