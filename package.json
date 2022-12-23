@@ -1,7 +1,7 @@
 {
   "name": "iobroker.admin-component-template",
   "private": true,
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "build": "gulp",
     "release": "release-script",
