@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "admin-component-template",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "news": {
+      "0.1.6": {
+        "en": "Updated packages",
+        "de": "Aktualisierte Pakete",
+        "ru": "Обновленные пакеты",
+        "pt": "Pacotes atualizados",
+        "nl": "Verouderde pakketten",
+        "fr": "Forfaits mis à jour",
+        "it": "Pacchetti aggiornati",
+        "es": "Paquetes actualizados",
+        "pl": "Pakiet upoważniony",
+        "uk": "Оновлені пакети",
+        "zh-cn": "最新一揽子计划"
+      },
       "0.1.5": {
         "en": "Corrected issue with version of common packages\nUpdated packages",
         "de": "Korrigierte Ausgabe mit Version von gemeinsamen Paketen\nAktualisierte Pakete",
