@@ -1,8 +1,27 @@
 const gulp = require('gulp');
 const fs = require('fs');
 const cp = require('child_process');
-const del = require('del');
 const src = `${__dirname}/src/`;
+
+function deleteFoldersRecursive(path, exceptions) {
+    if (fs.existsSync(path)) {
+        const files = fs.readdirSync(path);
+        for (const file of files) {
+            const curPath = `${path}/${file}`;
+            if (exceptions && exceptions.find(e => curPath.endsWith(e))) {
+                continue;
+            }
+
+            const stat = fs.statSync(curPath);
+            if (stat.isDirectory()) {
+                deleteFoldersRecursive(curPath);
+                fs.rmdirSync(curPath);
+            } else {
+                fs.unlinkSync(curPath);
+            }
+        }
+    }
+}
 
 function npmInstall() {
     return new Promise((resolve, reject) => {
@@ -13,15 +32,15 @@ function npmInstall() {
         console.log(`"${cmd} in ${cwd}`);
 
         // System call used for update of js-controller itself,
-        // because during installation npm packet will be deleted too, but some files must be loaded even during the install process.
+        // because during the installation npm packet will be deleted too, but some files must be loaded even during the installation process.
         const exec = cp.exec;
         const child = exec(cmd, {cwd});
 
         child.stderr.pipe(process.stderr);
         child.stdout.pipe(process.stdout);
 
-        child.on('exit', (code /* , signal */) => {
-            // code 1 is strange error that cannot be explained. Everything is installed but error :(
+        child.on('exit', code => {
+            // code 1 is a strange error that cannot be explained. Everything is installed but error :(
             if (code && code !== 1) {
                 reject(`Cannot install: ${code}`);
             } else {
@@ -68,7 +87,11 @@ function build() {
     });
 }
 
-gulp.task('0-clean', () => del(['admin/**/*', '!admin/admin-component-template.png', '!admin/jsonConfig.json', 'src/build/**/*']));
+gulp.task('0-clean', done => {
+    deleteFoldersRecursive(`${__dirname}/admin`, ['admin-component-template.png', 'jsonConfig.json']);
+    deleteFoldersRecursive(`${__dirname}/src/build`);
+    done();
+});
 
 gulp.task('1-npm', async () => npmInstall());
 gulp.task('2-compile', async () => build());

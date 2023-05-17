@@ -31,8 +31,11 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Updated packages
+
 ### 0.1.5 (2022-12-23)
-* (bluefox) Corrected issue with version of common packages
+* (bluefox) Corrected issue with the version of common packages
 * (bluefox) Updated packages
 
 ### 0.1.0 (2022-05-26)
@@ -44,7 +47,7 @@ Start in `src`:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2022 bluefox <dogafox@gmail.com>
+Copyright (c) 2022-2023 bluefox <dogafox@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
