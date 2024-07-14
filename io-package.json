@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "admin-component-template",
-    "version": "0.1.6",
+    "version": "1.0.0",
     "news": {
+      "1.0.0": {
+        "en": "Changed for Admin 7",
+        "de": "Für Admin 7 geändert",
+        "ru": "Изменено на Админ 7",
+        "pt": "Alterado para Admin 7",
+        "nl": "Gewijzigd voor Admin 7",
+        "fr": "Change pour l'admin 7",
+        "it": "Cambiato per Admin 7",
+        "es": "Cambios en el Admin 7",
+        "pl": "Zmieniony dla Admin 7",
+        "uk": "Змінено адміністратора 7",
+        "zh-cn": "行政7变更"
+      },
       "0.1.6": {
         "en": "Updated packages",
         "de": "Aktualisierte Pakete",
