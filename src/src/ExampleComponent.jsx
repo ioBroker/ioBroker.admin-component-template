@@ -1,24 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@mui/styles';
 
 import { Button } from '@mui/material';
 
 // important to make from package and not from some children.
 // invalid
-// import ConfigGeneric from '@iobroker/adapter-react-v5/ConfigGeneric';
+// import ConfigGeneric from '@iobroker/json-config/ConfigGeneric';
 // valid
-import { ConfigGeneric, ColorPicker } from '@iobroker/adapter-react-v5';
+import { ConfigGeneric } from '@iobroker/json-config';
+import { ColorPicker } from '@iobroker/adapter-react-v5';
 
-const styles = theme => ({
-    table: {
-        minWidth: 400
+const styles = {
+    button: {
+        minWidth: 150,
     },
-    header: {
-        fontSize: 16,
-        fontWeight: 'bold'
-    }
-});
+};
 
 class ExampleComponent extends ConfigGeneric {
     componentDidMount() {
@@ -36,10 +32,20 @@ class ExampleComponent extends ConfigGeneric {
         const value = ConfigGeneric.getValue(this.props.data, this.props.attr);
 
         return <>
-            <Button color="secondary" variant="contained" onClick={this.buttonHandler}>Example Button</Button>
-            <ColorPicker value={value} onChange={color => {
-                this.onChange(this.props.attr, color);
-            }}/>
+            <Button
+                style={styles.button}
+                color="secondary"
+                variant="contained"
+                onClick={this.buttonHandler}
+            >
+                Example Button
+            </Button>
+            <ColorPicker
+                value={value}
+                onChange={color => {
+                    this.onChange(this.props.attr, color);
+                }}
+            />
         </>;
     }
 }
@@ -49,7 +55,6 @@ ExampleComponent.propTypes = {
     themeType: PropTypes.string,
     themeName: PropTypes.string,
     style: PropTypes.object,
-    className: PropTypes.string,
     data: PropTypes.object.isRequired,
     attr: PropTypes.string,
     schema: PropTypes.object,
@@ -57,4 +62,4 @@ ExampleComponent.propTypes = {
     onChange: PropTypes.func,
 };
 
-export default withStyles(styles)(ExampleComponent);
+export default ExampleComponent;
