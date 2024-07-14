@@ -9,7 +9,7 @@
     "dependencies": {},
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-        "@iobroker/adapter-react-v5": "^6.0.18",
+        "@iobroker/adapter-react-v5": "^6.0.19",
         "@iobroker/json-config": "^7.0.13",
         "@mui/material": "^5.16.1",
         "prop-types": "^15.8.1",

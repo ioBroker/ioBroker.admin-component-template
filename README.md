@@ -6,7 +6,7 @@ Build process creates files in directory build.
 
 All files from `admin/custom` folder must be in adapter admin directory. 
 
-To use this component in admin add to jsonConfig.json file:
+To use this component in admin, add to `jsonConfig.json` file:
 ```
     "myCustomAttribute": {
       "type": "custom",
@@ -31,7 +31,7 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
-### 1.0.0 (2024-07-14)
+### **WORK IN PROGRESS**
 * (bluefox) Changed for Admin 7
 
 ### 0.1.6 (2023-05-17)
