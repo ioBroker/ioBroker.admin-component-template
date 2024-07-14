@@ -31,7 +31,7 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
-### **WORK IN PROGRESS**
+### 1.0.1 (2024-07-14)
 * (bluefox) Changed for Admin 7
 
 ### 0.1.6 (2023-05-17)
