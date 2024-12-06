@@ -20,8 +20,10 @@ class ExampleComponent extends ConfigGeneric {
     componentDidMount() {
         super.componentDidMount();
 
-        this.props.socket.getState('system.adapter.admin.0.alive')
-            .then(result => console.log(result));
+        // From admin 7.4.4 socket is in oContext
+        const socket = this.props.oContext ? this.props.oContext.socket : this.props.socket;
+
+        socket.getState('system.adapter.admin.0.alive').then(result => console.log(result));
     }
 
     buttonHandler = () => {
@@ -31,22 +33,24 @@ class ExampleComponent extends ConfigGeneric {
     renderItem(error, disabled, defaultValue) {
         const value = ConfigGeneric.getValue(this.props.data, this.props.attr);
 
-        return <>
-            <Button
-                style={styles.button}
-                color="secondary"
-                variant="contained"
-                onClick={this.buttonHandler}
-            >
-                Example Button
-            </Button>
-            <ColorPicker
-                value={value}
-                onChange={color => {
-                    this.onChange(this.props.attr, color);
-                }}
-            />
-        </>;
+        return (
+            <>
+                <Button
+                    style={styles.button}
+                    color="secondary"
+                    variant="contained"
+                    onClick={this.buttonHandler}
+                >
+                    Example Button
+                </Button>
+                <ColorPicker
+                    value={value}
+                    onChange={color => {
+                        this.onChange(this.props.attr, color);
+                    }}
+                />
+            </>
+        );
     }
 }
 
