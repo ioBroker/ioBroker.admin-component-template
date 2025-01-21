@@ -2,7 +2,9 @@
 import React from 'react';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 
-import { GenericApp, I18n, Loader, ConfigGeneric, AdminConnection } from '@iobroker/adapter-react-v5';
+import { Box } from '@mui/material';
+
+import { GenericApp, I18n, Loader, AdminConnection } from '@iobroker/adapter-react-v5';
 
 import ExampleComponent from './ExampleComponent';
 
@@ -49,9 +51,18 @@ class App extends GenericApp {
                     <Box sx={styles.app}>
                         <div style={styles.item}>
                             <ExampleComponent
-                                socket={this.socket}
-                                themeType={this.state.themeType}
-                                themeName={this.state.themeName}
+                                // Admin will provide the following object to the component
+                                oContext={{
+                                    socket: this.socket,
+                                    themeType: this.state.themeType,
+                                    adapterName: 'example',
+                                    dateFormat: 'DD.MM.YYYY',
+                                    instance: 0,
+                                    isFloatComma: true,
+                                    theme: this.state.theme,
+                                    _themeName: this.state.themeName,
+                                    forceUpdate: () => {},
+                                }}
                                 attr="myCustomAttribute"
                                 data={this.state.data}
                                 onError={() => {}}
@@ -69,4 +80,4 @@ class App extends GenericApp {
     }
 }
 
-export default withStyles(styles)(App);
+export default App;

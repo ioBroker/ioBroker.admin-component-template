@@ -1,6 +1,4 @@
-const fs = require('node:fs');
-const cp = require('node:child_process');
-const { deleteFoldersRecursive, npmInstall, buildReact, copyFiles } = require('@iobroker/build-tools')
+const { deleteFoldersRecursive, npmInstall, buildReact, copyFiles } = require('@iobroker/build-tools');
 const src = `${__dirname}/src-admin/`;
 
 function clean() {
@@ -18,11 +16,9 @@ function copyAllFiles() {
 if (process.argv.includes('--0-clean')) {
     clean();
 } else if (process.argv.includes('--1-npm')) {
-    npmInstall(src)
-        .catch(e => console.error(`Cannot install npm: ${e}`));
+    npmInstall(src).catch(e => console.error(`Cannot install npm: ${e}`));
 } else if (process.argv.includes('--2-build')) {
-    buildReact(src, { craco: true })
-        .catch(e => console.error(`Cannot build: ${e}`));
+    buildReact(src, { craco: true }).catch(e => console.error(`Cannot build: ${e}`));
 } else if (process.argv.includes('--3-copy')) {
     copyAllFiles();
 } else {
@@ -33,5 +29,5 @@ if (process.argv.includes('--0-clean')) {
         .catch(e => {
             console.error(e);
             process.exit(2);
-        })
+        });
 }
