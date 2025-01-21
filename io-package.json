@@ -1,96 +1,116 @@
 {
-    "common": {
-        "name": "admin-component-template",
-        "version": "1.0.1",
-        "news": {
-            "1.0.1": {
-                "en": "Changed for Admin 7",
-                "de": "Für Admin 7 geändert",
-                "ru": "Изменено на Админ 7",
-                "pt": "Alterado para Admin 7",
-                "nl": "Gewijzigd voor Admin 7",
-                "fr": "Change pour l'admin 7",
-                "it": "Cambiato per Admin 7",
-                "es": "Cambios en el Admin 7",
-                "pl": "Zmieniony dla Admin 7",
-                "uk": "Змінено адміністратора 7",
-                "zh-cn": "行政7变更"
-            },
-            "1.0.0": {
-                "en": "Changed for Admin 7",
-                "de": "Für Admin 7 geändert",
-                "ru": "Изменено на Админ 7",
-                "pt": "Alterado para Admin 7",
-                "nl": "Gewijzigd voor Admin 7",
-                "fr": "Change pour l'admin 7",
-                "it": "Cambiato per Admin 7",
-                "es": "Cambios en el Admin 7",
-                "pl": "Zmieniony dla Admin 7",
-                "uk": "Змінено адміністратора 7",
-                "zh-cn": "行政7变更"
-            },
-            "0.1.6": {
-                "en": "Updated packages",
-                "de": "Aktualisierte Pakete",
-                "ru": "Обновленные пакеты",
-                "pt": "Pacotes atualizados",
-                "nl": "Verouderde pakketten",
-                "fr": "Forfaits mis à jour",
-                "it": "Pacchetti aggiornati",
-                "es": "Paquetes actualizados",
-                "pl": "Pakiet upoważniony",
-                "uk": "Оновлені пакети",
-                "zh-cn": "最新一揽子计划"
-            },
-            "0.1.5": {
-                "en": "Corrected issue with version of common packages\nUpdated packages",
-                "de": "Korrigierte Ausgabe mit Version von gemeinsamen Paketen\nAktualisierte Pakete",
-                "ru": "Исправлена проблема с версией общих пакетов\nОбновленные пакеты",
-                "pt": "Problema corrigido com a versão de pacotes comuns\nPacotes atualizados",
-                "nl": "Geschatte kwestie met versie van gemeenschappelijke pakketten\nVerouderde pakketten",
-                "fr": "Numéro corrigé avec la version de paquets communs\nForfaits mis à jour",
-                "it": "Emissione corretta con la versione di pacchetti comuni\nPacchetti aggiornati",
-                "es": "Edición corregida con versión de paquetes comunes\nPaquetes actualizados",
-                "pl": "Kwestia z wersją wspólnych pakietów\nPakiet upoważniony",
-                "uk": "Виправлено проблему з версією звичайних пакетів\nОновлені пакети",
-                "zh-cn": "A. 用共同一揽子计划版本加以更正的问题\n最新一揽子计划"
-            },
-            "0.1.4": {
-                "en": "initial commit"
-            }
-        },
-        "title": "Admin component example",
-        "desc": {
-            "en": "Admin component example"
-        },
-        "platform": "Javascript/Node.js",
-        "loglevel": "info",
-        "icon": "admin-component-template.png",
-        "enabled": true,
-        "mode": "once",
-        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.admin-component-template/master/admin/admin-component-template.png",
-        "keywords": ["template", "admin"],
-        "readme": "https://github.com/ioBroker/ioBroker.admin-component-template/blob/master/README.md",
-        "authors": ["bluefox <dogafox@gmail.com>"],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "tier": 3,
-        "adminUI": {
-            "config": "json"
-        },
-        "license": "MIT",
-        "dependencies": ["admin"],
-        "onlyWWW": true,
-        "singleton": true,
-        "type": "visualization-widgets",
-        "titleLang": {
-            "en": "Admin component example"
-        }
+  "common": {
+    "name": "admin-component-template",
+    "version": "1.0.2",
+    "news": {
+      "1.0.2": {
+        "en": "Updated example and packages",
+        "de": "Beispiel und Pakete aktualisiert",
+        "ru": "Обновленный пример и пакеты",
+        "pt": "Exemplo e pacotes atualizados",
+        "nl": "Bijgewerkt voorbeeld en pakketten",
+        "fr": "Exemple et paquets mis à jour",
+        "it": "Esempio e pacchetti aggiornati",
+        "es": "Ejemplo actualizado y paquetes",
+        "pl": "Aktualizacja przykładu i pakietów",
+        "uk": "Оновлений приклад і пакети",
+        "zh-cn": "更新实例和软件包"
+      },
+      "1.0.1": {
+        "en": "Changed for Admin 7",
+        "de": "Für Admin 7 geändert",
+        "ru": "Изменено на Админ 7",
+        "pt": "Alterado para Admin 7",
+        "nl": "Gewijzigd voor Admin 7",
+        "fr": "Change pour l'admin 7",
+        "it": "Cambiato per Admin 7",
+        "es": "Cambios en el Admin 7",
+        "pl": "Zmieniony dla Admin 7",
+        "uk": "Змінено адміністратора 7",
+        "zh-cn": "行政7变更"
+      },
+      "1.0.0": {
+        "en": "Changed for Admin 7",
+        "de": "Für Admin 7 geändert",
+        "ru": "Изменено на Админ 7",
+        "pt": "Alterado para Admin 7",
+        "nl": "Gewijzigd voor Admin 7",
+        "fr": "Change pour l'admin 7",
+        "it": "Cambiato per Admin 7",
+        "es": "Cambios en el Admin 7",
+        "pl": "Zmieniony dla Admin 7",
+        "uk": "Змінено адміністратора 7",
+        "zh-cn": "行政7变更"
+      },
+      "0.1.6": {
+        "en": "Updated packages",
+        "de": "Aktualisierte Pakete",
+        "ru": "Обновленные пакеты",
+        "pt": "Pacotes atualizados",
+        "nl": "Verouderde pakketten",
+        "fr": "Forfaits mis à jour",
+        "it": "Pacchetti aggiornati",
+        "es": "Paquetes actualizados",
+        "pl": "Pakiet upoważniony",
+        "uk": "Оновлені пакети",
+        "zh-cn": "最新一揽子计划"
+      },
+      "0.1.5": {
+        "en": "Corrected issue with version of common packages\nUpdated packages",
+        "de": "Korrigierte Ausgabe mit Version von gemeinsamen Paketen\nAktualisierte Pakete",
+        "ru": "Исправлена проблема с версией общих пакетов\nОбновленные пакеты",
+        "pt": "Problema corrigido com a versão de pacotes comuns\nPacotes atualizados",
+        "nl": "Geschatte kwestie met versie van gemeenschappelijke pakketten\nVerouderde pakketten",
+        "fr": "Numéro corrigé avec la version de paquets communs\nForfaits mis à jour",
+        "it": "Emissione corretta con la versione di pacchetti comuni\nPacchetti aggiornati",
+        "es": "Edición corregida con versión de paquetes comunes\nPaquetes actualizados",
+        "pl": "Kwestia z wersją wspólnych pakietów\nPakiet upoważniony",
+        "uk": "Виправлено проблему з версією звичайних пакетів\nОновлені пакети",
+        "zh-cn": "A. 用共同一揽子计划版本加以更正的问题\n最新一揽子计划"
+      },
+      "0.1.4": {
+        "en": "initial commit"
+      }
     },
-    "native": {
-        "myCustomComponent": "blue"
+    "title": "Admin component example",
+    "desc": {
+      "en": "Admin component example"
     },
-    "instanceObjects": []
+    "platform": "Javascript/Node.js",
+    "loglevel": "info",
+    "icon": "admin-component-template.png",
+    "enabled": true,
+    "mode": "once",
+    "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.admin-component-template/master/admin/admin-component-template.png",
+    "keywords": [
+      "template",
+      "admin"
+    ],
+    "readme": "https://github.com/ioBroker/ioBroker.admin-component-template/blob/master/README.md",
+    "authors": [
+      "bluefox <dogafox@gmail.com>"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "tier": 3,
+    "adminUI": {
+      "config": "json"
+    },
+    "license": "MIT",
+    "dependencies": [
+      "admin"
+    ],
+    "onlyWWW": true,
+    "singleton": true,
+    "type": "visualization-widgets",
+    "titleLang": {
+      "en": "Admin component example"
+    }
+  },
+  "native": {
+    "myCustomComponent": "blue"
+  },
+  "instanceObjects": []
 }

@@ -31,7 +31,7 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
-### **WORK IN PROGRESS**
+### 1.0.2 (2025-01-21)
 * (bluefox) Updated example and packages
 
 ### 1.0.1 (2024-07-14)
