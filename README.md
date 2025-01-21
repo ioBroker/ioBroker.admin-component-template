@@ -6,8 +6,8 @@ Build process creates files in directory build.
 
 All files from `admin/custom` folder must be in adapter admin directory. 
 
-To use this component in admin add to jsonConfig.json file:
-```
+To use this component in admin, add to `jsonConfig.json` file:
+```json
     "myCustomAttribute": {
       "type": "custom",
       "i18n": true,
@@ -17,7 +17,7 @@ To use this component in admin add to jsonConfig.json file:
 ```
 
 Explanation: 
-- `AdminComponentTemplateSet` - is unique name of this set of components (see in `src/modulefederation.config.js => name (line 14)`). It is suggested to use adapter name for it. 
+- `AdminComponentTemplateSet` - is unique name of this set of components (see in `src/modulefederation.config.js => name (line 4)`). It is suggested to use adapter name for it. 
 - `Components` - file name where all components are (`src/Components.jsx`)
 - `ExampleComponent` - name of component in `Components.js`which must be used.
 - `i18n` - if set to `true`, so the admin will load language files from `i18n`directory (in the same directory, where `customComponents.js` is), if set to language object, it will be used directly. Example: `{"easyconfig_text": {"en": "Text"}}`.
@@ -31,6 +31,12 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
+### 1.0.2 (2025-01-21)
+* (bluefox) Updated example and packages
+
+### 1.0.1 (2024-07-14)
+* (bluefox) Changed for Admin 7
+
 ### 0.1.6 (2023-05-17)
 * (bluefox) Updated packages
 
@@ -47,7 +53,7 @@ Start in `src`:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2022-2023 bluefox <dogafox@gmail.com>
+Copyright (c) 2022-2025 bluefox <dogafox@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

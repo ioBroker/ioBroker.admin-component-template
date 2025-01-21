@@ -24,6 +24,6 @@ dist-ssr
 *.sw?
 /package-lock.json
 /build/
-/src/package-lock.json
+/src-admin/package-lock.json
 /admin/custom
-/src/build
+/src-admin/build
