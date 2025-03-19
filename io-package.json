@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "admin-component-template",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "news": {
+      "2.0.0": {
+        "en": "Rewritten in TypeScript with vite",
+        "de": "Neu geschrieben in TypeScript mit vite",
+        "ru": "Переписано в TypeScript с vite",
+        "pt": "Reescrito em TypeScript com vite",
+        "nl": "Herschreven in TypeScript met vite",
+        "fr": "Réécrit dans TypeScript avec rite",
+        "it": "Rescritto in TypeScript con vite",
+        "es": "Reescrito en TipoScript con vite",
+        "pl": "Przepisane w TypeScript z vite",
+        "uk": "Написання у TypeScript з vite",
+        "zh-cn": "用 Vite 重写到类型脚本"
+      },
       "1.0.2": {
         "en": "Updated example and packages",
         "de": "Beispiel und Pakete aktualisiert",

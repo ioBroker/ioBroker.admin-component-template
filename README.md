@@ -31,7 +31,7 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
-### **WORK IN PROGRESS**
+### 2.0.0 (2025-03-19)
 * (bluefox) Rewritten in TypeScript with vite
 
 ### 1.0.2 (2025-01-21)
