@@ -7,20 +7,21 @@ Build process creates files in directory build.
 All files from `admin/custom` folder must be in adapter admin directory. 
 
 To use this component in admin, add to `jsonConfig.json` file:
-```json
+```json5
     "myCustomAttribute": {
       "type": "custom",
       "i18n": true,
       "url": "custom/customComponents.js",
       "name": "AdminComponentTemplateSet/Components/ExampleComponent"
+      "bundlerType": "module" // Written with TypeScript
     }
 ```
 
 Explanation: 
-- `AdminComponentTemplateSet` - is unique name of this set of components (see in `src/modulefederation.config.js => name (line 4)`). It is suggested to use adapter name for it. 
+- `AdminComponentTemplateSet` - is unique name of this set of components (see in `src/vite.config.ts => name (line 12)`). It is suggested to use adapter name for it. 
 - `Components` - file name where all components are (`src/Components.tsx`)
-- `ExampleComponent` - name of component in `Components.js`which must be used.
-- `i18n` - if set to `true`, so the admin will load language files from `i18n`directory (in the same directory, where `customComponents.js` is), if set to language object, it will be used directly. Example: `{"easyconfig_text": {"en": "Text"}}`.
+- `ExampleComponent` - name of component in `Components.tsx`which must be used.
+- `i18n` - if set to `true`, so the admin will load language files from `i18n`directory (in the same directory, where `customComponents.js` is), if set to a language object, it will be used directly. Example: `{"easyconfig_text": {"en": "Text"}}`.
 
 ## Development
 Start in `src`:
