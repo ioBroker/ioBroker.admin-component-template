@@ -18,7 +18,7 @@ To use this component in admin, add to `jsonConfig.json` file:
 
 Explanation: 
 - `AdminComponentTemplateSet` - is unique name of this set of components (see in `src/modulefederation.config.js => name (line 4)`). It is suggested to use adapter name for it. 
-- `Components` - file name where all components are (`src/Components.jsx`)
+- `Components` - file name where all components are (`src/Components.tsx`)
 - `ExampleComponent` - name of component in `Components.js`which must be used.
 - `i18n` - if set to `true`, so the admin will load language files from `i18n`directory (in the same directory, where `customComponents.js` is), if set to language object, it will be used directly. Example: `{"easyconfig_text": {"en": "Text"}}`.
 
@@ -31,6 +31,9 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Rewritten in TypeScript with vite
+
 ### 1.0.2 (2025-01-21)
 * (bluefox) Updated example and packages
 

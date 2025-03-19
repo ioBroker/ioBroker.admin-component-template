@@ -5,7 +5,8 @@
       "type": "custom",
       "i18n": true,
       "url": "custom/customComponents.js",
-      "name": "AdminComponentTemplateSet/Components/ExampleComponent"
+      "name": "AdminComponentTemplateSet/Components/ExampleComponent",
+      "bundlerType": "module"
     }
   }
 }

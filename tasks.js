@@ -18,13 +18,13 @@ if (process.argv.includes('--0-clean')) {
 } else if (process.argv.includes('--1-npm')) {
     npmInstall(src).catch(e => console.error(`Cannot install npm: ${e}`));
 } else if (process.argv.includes('--2-build')) {
-    buildReact(src, { craco: true }).catch(e => console.error(`Cannot build: ${e}`));
+    buildReact(src, { vite: true }).catch(e => console.error(`Cannot build: ${e}`));
 } else if (process.argv.includes('--3-copy')) {
     copyAllFiles();
 } else {
     clean();
     npmInstall(src)
-        .then(() => buildReact(src, { craco: true }))
+        .then(() => buildReact(src, { vite: true }))
         .then(() => copyAllFiles())
         .catch(e => {
             console.error(e);
