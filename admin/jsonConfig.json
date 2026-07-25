@@ -1,12 +1,13 @@
 {
-  "type": "panel",
-  "items": {
-    "myCustomAttribute": {
-      "type": "custom",
-      "i18n": true,
-      "url": "custom/customComponents.js",
-      "name": "AdminComponentTemplateSet/Components/ExampleComponent",
-      "bundlerType": "module"
+    "type": "panel",
+    "i18n": false,
+    "items": {
+        "myCustomAttribute": {
+            "type": "custom",
+            "i18n": true,
+            "url": "custom/customComponents.js",
+            "name": "AdminComponentTemplateSet/Components/ExampleComponent",
+            "guiApi": 2
+        }
     }
-  }
 }

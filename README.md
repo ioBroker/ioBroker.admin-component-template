@@ -12,8 +12,8 @@ To use this component in admin, add to `jsonConfig.json` file:
       "type": "custom",
       "i18n": true,
       "url": "custom/customComponents.js",
-      "name": "AdminComponentTemplateSet/Components/ExampleComponent"
-      "bundlerType": "module" // Written with TypeScript
+      "name": "AdminComponentTemplateSet/Components/ExampleComponent",
+      "guiApi": 2 // Built against @iobroker/gui-components (React 19 / MUI 9)
     }
 ```
 
@@ -22,6 +22,31 @@ Explanation:
 - `Components` - file name where all components are (`src/Components.tsx`)
 - `ExampleComponent` - name of component in `Components.tsx`which must be used.
 - `i18n` - if set to `true`, so the admin will load language files from `i18n`directory (in the same directory, where `customComponents.js` is), if set to a language object, it will be used directly. Example: `{"easyconfig_text": {"en": "Text"}}`.
+- `guiApi` - generation of the GUI API this component was built against.
+
+### GUI API generation
+
+The admin shares React, MUI and the ioBroker component libraries with every custom component as
+module federation singletons, so there is exactly one version of each at runtime. A component built
+against an older generation would therefore be handed APIs it was never compiled for.
+
+`guiApi` declares which generation this component expects, so the admin can refuse to start an
+incompatible one instead of crashing while rendering it:
+
+| `guiApi`       | Component library                     | React / MUI      |
+|----------------|---------------------------------------|------------------|
+| `2`            | `@iobroker/gui-components`            | React 19 / MUI 9 |
+| omitted or `1` | `@iobroker/adapter-react-v5` (legacy) | React 18 / MUI 6 |
+
+This template is built against generation `2`. Keep `guiApi` in sync with the component library in
+`src-admin/package.json`. To migrate an old component:
+
+1. Replace `@iobroker/adapter-react-v5` with `@iobroker/gui-components` in `src-admin/package.json`
+   and in every import, and move to React 19 / MUI 9.
+2. Rebuild the component.
+3. In `jsonConfig.json` set `"guiApi": 2`. You can drop `"bundlerType"` at the same time - it is
+   deprecated and ignored, because components of generation `2` are always built as ES modules.
+   Leaving it in place does no harm.
 
 ## Development
 Start in `src`:
@@ -32,6 +57,10 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
+### **WORK IN PROGRESS**
+* (bluefox) Breaking: React19 + MUI 9
+* (bluefox) Breaking: guiApi = 2
+
 ### 2.0.0 (2025-03-19)
 * (bluefox) Rewritten in TypeScript with vite
 
@@ -57,7 +86,7 @@ Start in `src`:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2022-2025 bluefox <dogafox@gmail.com>
+Copyright (c) 2022-2026 bluefox <dogafox@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -7,7 +7,7 @@ import { Button } from '@mui/material';
 // import ConfigGeneric from '@iobroker/json-config/ConfigGeneric';
 // valid
 import { ConfigGeneric, type ConfigGenericProps, type ConfigGenericState } from '@iobroker/json-config';
-import { ColorPicker } from '@iobroker/adapter-react-v5';
+import { ColorPicker } from '@iobroker/gui-components';
 
 const styles: Record<string, React.CSSProperties> = {
     button: {
@@ -27,8 +27,9 @@ export default class ExampleComponent extends ConfigGeneric<ConfigGenericProps, 
             test: '',
         };
     }
-    componentDidMount(): void {
-        super.componentDidMount();
+
+    async componentDidMount(): Promise<void> {
+        await super.componentDidMount();
         void this.props.oContext.socket.getState('system.adapter.admin.0.alive').then(result => console.log(result));
     }
 
