@@ -57,7 +57,7 @@ Start in `src`:
 	### **WORK IN PROGRESS**
 -->
 ## Changelog
-### 3.0.3 (2026-07-26)
+### **WORK IN PROGRESS**
 * (bluefox) Breaking: React19 + MUI 9
 * (bluefox) Breaking: guiApi = 2
 
