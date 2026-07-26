@@ -10,10 +10,11 @@
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "module": "ESNext",
-        "moduleResolution": "Node",
+        "moduleResolution": "Bundler",
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
+        "rootDir": "./src",
         "jsx": "react-jsx",
         "baseUrl": ".",
         "types": ["@iobroker/types"]
