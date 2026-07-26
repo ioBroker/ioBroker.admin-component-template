@@ -12,6 +12,9 @@ function copyAllFiles(): void {
     copyFiles(['src-admin/build/static/js/*.map'], 'admin/custom/static/js');
     copyFiles(['src-admin/build/customComponents.js'], 'admin/custom');
     copyFiles(['src-admin/build/customComponents.js.map'], 'admin/custom');
+    // The admin reads this manifest to see which component library the build was made against,
+    // and refuses to start the component if it targets an older GUI API generation.
+    copyFiles(['src-admin/build/mf-manifest.json'], 'admin/custom');
     copyFiles(['src-admin/src/i18n/*.json'], 'admin/custom/i18n');
 }
 
