@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "admin-component-template",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "news": {
+      "3.0.4": {
+        "en": "Breaking: React19 + MUI 9\nBreaking: guiApi = 2",
+        "de": "Bruch: React19 + MUI 9\nBruch: guiApi = 2",
+        "ru": "Обсуждение React19 + MUI 9\nРазрыв: ГуйАпи = 2",
+        "pt": "Quebra: React19 + MUI 9\nQuebrar: guiApi = 2",
+        "nl": "Breaking: React19 + MUI 9\nBreaking: guiApi = 2",
+        "fr": "Breaking: Réaction19 + MUI 9\nPause: guiApi = 2",
+        "it": "Breaking: React19 + MUI 9\nRottura: guiApi = 2",
+        "es": "Breaking: React19 + MUI 9\nBreaking: guiApi = 2",
+        "pl": "Breaking: React 19 + MUI 9\nBreaking: guiApi = 2",
+        "uk": "Перерва: React19 + MUI 9\nРозрив: guiApi = 2",
+        "zh-cn": "断裂:反应19 + MUI 9\n中断: guiApi = 2"
+      },
       "2.0.0": {
         "en": "Rewritten in TypeScript with vite",
         "de": "Neu geschrieben in TypeScript mit vite",
