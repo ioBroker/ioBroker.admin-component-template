@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "admin-component-template",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "news": {
+      "3.0.1": {
+        "en": "Breaking: React19 + MUI 9\nBreaking: guiApi = 2",
+        "de": "Bruch: React19 + MUI 9\nBruch: guiApi = 2",
+        "ru": "Обсуждение React19 + MUI 9\nРазрыв: ГуйАпи = 2",
+        "pt": "Quebra: React19 + MUI 9\nQuebrar: guiApi = 2",
+        "nl": "Breaking: React19 + MUI 9\nBreaking: guiApi = 2",
+        "fr": "Breaking: Réaction19 + MUI 9\nPause: guiApi = 2",
+        "it": "Breaking: React19 + MUI 9\nRottura: guiApi = 2",
+        "es": "Breaking: React19 + MUI 9\nBreaking: guiApi = 2",
+        "pl": "Breaking: React 19 + MUI 9\nBreaking: guiApi = 2",
+        "uk": "Перерва: React19 + MUI 9\nРозрив: guiApi = 2",
+        "zh-cn": "断裂:反应19 + MUI 9\n中断: guiApi = 2"
+      },
       "3.0.0": {
         "en": "Breaking: React19 + MUI 9\nBreaking: guiApi = 2",
         "de": "Bruch: React19 + MUI 9\nBruch: guiApi = 2",
@@ -80,19 +93,6 @@
         "pl": "Pakiet upoważniony",
         "uk": "Оновлені пакети",
         "zh-cn": "最新一揽子计划"
-      },
-      "0.1.5": {
-        "en": "Corrected issue with version of common packages\nUpdated packages",
-        "de": "Korrigierte Ausgabe mit Version von gemeinsamen Paketen\nAktualisierte Pakete",
-        "ru": "Исправлена проблема с версией общих пакетов\nОбновленные пакеты",
-        "pt": "Problema corrigido com a versão de pacotes comuns\nPacotes atualizados",
-        "nl": "Geschatte kwestie met versie van gemeenschappelijke pakketten\nVerouderde pakketten",
-        "fr": "Numéro corrigé avec la version de paquets communs\nForfaits mis à jour",
-        "it": "Emissione corretta con la versione di pacchetti comuni\nPacchetti aggiornati",
-        "es": "Edición corregida con versión de paquetes comunes\nPaquetes actualizados",
-        "pl": "Kwestia z wersją wspólnych pakietów\nPakiet upoważniony",
-        "uk": "Виправлено проблему з версією звичайних пакетів\nОновлені пакети",
-        "zh-cn": "A. 用共同一揽子计划版本加以更正的问题\n最新一揽子计划"
       }
     },
     "title": "Admin component example",
