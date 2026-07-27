@@ -8,7 +8,9 @@ const config = {
     plugins: [
         federation({
             manifest: true,
-            name: 'AdminComponentEasyAccessSet',
+            // Must be unique per component set and match the first segment of `name` in
+            // `admin/jsonConfig.json` - two components sharing this name collide at runtime.
+            name: 'AdminComponentTemplateSet',
             filename: 'customComponents.js',
             exposes: {
                 './Components': './src/Components.tsx',

@@ -39,14 +39,200 @@ incompatible one instead of crashing while rendering it:
 | omitted or `1` | `@iobroker/adapter-react-v5` (legacy) | React 18 / MUI 6 |
 
 This template is built against generation `2`. Keep `guiApi` in sync with the component library in
-`src-admin/package.json`. To migrate an old component:
+`src-admin/package.json` - see the migration guide below.
 
-1. Replace `@iobroker/adapter-react-v5` with `@iobroker/gui-components` in `src-admin/package.json`
-   and in every import, and move to React 19 / MUI 9.
-2. Rebuild the component.
-3. In `jsonConfig.json` set `"guiApi": 2`. You can drop `"bundlerType"` at the same time - it is
-   deprecated and ignored, because components of generation `2` are always built as ES modules.
-   Leaving it in place does no harm.
+## Migrating a component from Admin 7 to Admin 8
+
+Admin 8 replaces the component library and moves the whole GUI stack forward:
+
+|                          | Admin 7                          | Admin 8                       |
+|--------------------------|----------------------------------|-------------------------------|
+| Component library        | `@iobroker/adapter-react-v5` ^7  | `@iobroker/gui-components` ^10 |
+| React                    | 18                               | 19                            |
+| MUI                      | 6                                | 9                             |
+| `@iobroker/json-config`  | ^7                               | ^9                            |
+| vite                     | 6                                | 8                             |
+| `@module-federation/vite`| ^1.2                             | ^1.19                         |
+| `guiApi`                 | omitted (= 1)                    | `2`                           |
+
+There is no compatibility mode: admin shares React, MUI and the ioBroker libraries as federation
+singletons, so a component built against generation 1 would be handed APIs it was never compiled
+for. Admin 8 refuses to start it instead of crashing while rendering.
+
+The steps below are exactly what this template went through - use its sources as the reference.
+
+### 1. Update the dependencies
+
+In `src-admin/package.json`:
+
+```jsonc
+{
+    "devDependencies": {
+        // replaced
+        "@iobroker/gui-components": "^10.0.5",   // was @iobroker/adapter-react-v5 ^7.x
+        "@iobroker/json-config": "^9.0.8",       // was ^7.x
+        "@mui/material": "^9.2.0",               // was ^6.x
+        "@mui/icons-material": "^9.2.0",         // was ^6.x
+        "react": "^19.2.8",                      // was ^18.x
+        "react-dom": "^19.2.8",                  // was ^18.x
+        "@types/react": "^19.2.17",              // was ^18.x
+        "@types/react-dom": "^19.2.3",           // was ^18.x
+        "@module-federation/runtime": "^2.8.0",  // was ^0.11.x
+        "@module-federation/vite": "^1.19.1",    // was ^1.2.x
+        "@vitejs/plugin-react": "^6.0.4",        // was ^4.x
+        "vite": "^8.1.5"                         // was 6.x
+        // removed: "vite-tsconfig-paths" - vite 8 resolves tsconfig paths itself
+    }
+}
+```
+
+### 2. Rename the imports
+
+Every `@iobroker/adapter-react-v5` import becomes `@iobroker/gui-components`. The exported names did
+not change, so this is a pure find-and-replace:
+
+```ts
+// before
+import { ColorPicker, GenericApp, Loader } from '@iobroker/adapter-react-v5';
+// after
+import { ColorPicker, GenericApp, Loader } from '@iobroker/gui-components';
+```
+
+### 3. Adjust `src-admin/vite.config.ts`
+
+```diff
+ import react from '@vitejs/plugin-react';
+ import commonjs from 'vite-plugin-commonjs';
+-import vitetsConfigPaths from 'vite-tsconfig-paths';
+ import { federation } from '@module-federation/vite';
+-import { moduleFederationShared } from '@iobroker/adapter-react-v5/modulefederation.admin.config';
++import { moduleFederationShared } from '@iobroker/gui-components/modulefederation.admin.config';
+
+         react(),
+-        vitetsConfigPaths(),
+         commonjs(),
+     ],
++    resolve: {
++        tsconfigPaths: true,
++    },
+```
+
+While you are in this file, make sure `federation({ name: ... })` is **unique for your component**
+and matches the first segment of `name` in `jsonConfig.json`. Two components sharing a federation
+name collide at runtime.
+
+### 4. Adjust `admin/jsonConfig.json`
+
+```diff
+     "myCustomAttribute": {
+       "type": "custom",
+       "i18n": true,
+       "url": "custom/customComponents.js",
+       "name": "MyComponentSet/Components/ExampleComponent",
+-      "bundlerType": "module"
++      "guiApi": 2
+     }
+```
+
+`bundlerType` is deprecated and ignored - generation 2 components are always ES modules. Leaving it
+in place does no harm.
+
+### 5. Adjust `src-admin/tsconfig.json`
+
+Vite 8 resolves through the `exports` map, so the TypeScript settings have to match:
+
+```jsonc
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "jsx": "react-jsx"
+    }
+}
+```
+
+`module` and `moduleResolution` must be changed together - `Bundler` resolution is only valid with
+an ESM module kind.
+
+### 6. Delete `src-admin/localSharedImportMap.js`
+
+Older templates carried a checked-in shared import map. The current federation plugin generates it,
+so delete the file if your component still has one.
+
+### 7. Fix the code-level breaking changes
+
+**`ConfigGeneric.componentDidMount` is async now.** If you override it, await the base class:
+
+```diff
+-    componentDidMount(): void {
+-        super.componentDidMount();
++    async componentDidMount(): Promise<void> {
++        await super.componentDidMount();
+```
+
+**MUI 9 has only one `Grid`.** `Grid2` is gone (it was renamed to `Grid`), and the legacy `Grid` API
+was removed without a `GridLegacy` fallback:
+
+```diff
+-import { Grid2 as Grid } from '@mui/material';
++import { Grid } from '@mui/material';
+
+-<Grid item xs={12} md={6}>
++<Grid size={{ xs: 12, md: 6 }}>
+```
+
+Some layout props moved into `sx` on `Grid` and `Stack`:
+
+```diff
+-<Stack spacing={1} alignItems="center">
++<Stack spacing={1} sx={{ alignItems: 'center' }}>
+```
+
+**React 19 changed the ref typings.** `useRef<T>(null)` now returns `RefObject<T | null>`, and
+`LegacyRef` no longer exists. Where a MUI component wants `RefObject<T>`, either widen the ref type
+or pass a callback ref. Class components are unaffected.
+
+**If your component has its own entry point** (`src-admin/src/index.tsx` for the standalone dev app),
+React 19 removed `ReactDOM.render`:
+
+```diff
+-ReactDOM.render(<App />, document.getElementById('root'));
++createRoot(document.getElementById('root')).render(<App />);
+```
+
+### 8. Expect new lint errors
+
+`@iobroker/eslint-config` now ships `eslint-plugin-react-hooks` v7 with the React Compiler rules.
+Three of them regularly fire on code that was fine before, and they flag genuine problems:
+
+- `react-hooks/immutability` - mutating props or an outer variable while rendering. Build a new
+  object instead of patching the one you were given.
+- `react-hooks/set-state-in-effect` - an effect that only derives state from props. Compute the
+  value while rendering (`useMemo`) or move it into the event handler that causes the change.
+- `react-hooks/refs` - touching a ref during render. Typical case is react-dnd; move the connector
+  calls into a `useEffect`.
+
+### 9. Rebuild - and rebuild again after every library update
+
+A custom component bundles its own copy of `@iobroker/gui-components` as a fallback, so **a stale
+build keeps using stale library code even though admin provides a newer one**. The most visible
+symptom is untranslated labels: the component renders raw keys such as `custom_easy_Instance`
+instead of the text, because its bundled copy carries an empty translation dictionary.
+
+Always rebuild the component against the `@iobroker/gui-components` version the target admin ships,
+and release it together with the library update.
+
+### 10. Verify
+
+```bash
+cd src-admin && npm i && npm run build
+```
+
+Then open the instance configuration in admin and check that
+
+- the component renders at all (if not, the GUI API gate logs why in the browser console),
+- its labels are translated,
+- the browser console shows no `Translate: <key>` warnings for your keys.
 
 ## Development
 Start in `src`:

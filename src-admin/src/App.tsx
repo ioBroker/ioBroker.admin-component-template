@@ -115,7 +115,7 @@ export default class App extends GenericApp<GenericAppProps, AppState> {
                                 schema={{
                                     url: '',
                                     i18n: true,
-                                    name: 'AdminComponentEasyAccessSet/Components/ExampleComponent',
+                                    name: 'AdminComponentTemplateSet/Components/ExampleComponent',
                                     type: 'custom',
                                 }}
                                 onChange={data => this.setState({ data: data as Record<string, any> })}
