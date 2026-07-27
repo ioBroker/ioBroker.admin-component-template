@@ -1,7 +1,7 @@
 {
   "name": "iobroker.admin-component-template",
   "private": true,
-  "version": "3.0.4",
+  "version": "3.0.5",
   "scripts": {
     "build": "tsx tasks.ts",
     "check": "tsc --noEmit",
